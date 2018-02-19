@@ -12,7 +12,9 @@
     "url": "git+https://github.com/ozio/aurora-browser-sdk.git"
   },
   "keywords": [],
-  "files": [],
+  "files": [
+    "build/index.js"
+  ],
   "author": "",
   "license": "MIT",
   "bugs": {
