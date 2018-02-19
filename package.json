@@ -1,0 +1,33 @@
+{
+  "name": "aurora-browser-sdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./build/index.js",
+  "scripts": {
+    "build": "rm -rf ./build; webpack",
+    "dev": "rm -rf ./build; webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ozio/aurora-browser-sdk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ozio/aurora-browser-sdk/issues"
+  },
+  "homepage": "https://github.com/ozio/aurora-browser-sdk#readme",
+  "devDependencies": {
+    "@types/bowser": "^1.1.1",
+    "awesome-typescript-loader": "^3.4.1",
+    "tslint": "^5.9.1",
+    "tslint-eslint-rules": "^5.0.0",
+    "tslint-loader": "^3.5.3",
+    "typescript": "^2.7.2",
+    "webpack": "^3.11.0"
+  },
+  "dependencies": {
+    "eventemitter3": "^3.0.1"
+  }
+}
