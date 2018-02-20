@@ -1,5 +1,14 @@
-window["AuroraSDK"] =
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else {
+		var a = factory();
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
+})(typeof self !== 'undefined' ? self : this, function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -66,19 +75,49 @@ window["AuroraSDK"] =
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_eventemitter3__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_eventemitter3___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_eventemitter3__);
 
-class AuroraSDK extends __WEBPACK_IMPORTED_MODULE_0_eventemitter3__["EventEmitter"] {
-    init(options) {
-        this.emit('init', this);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var eventemitter3_1 = __webpack_require__(1);
+var AuroraSDK = /** @class */ (function (_super) {
+    __extends(AuroraSDK, _super);
+    function AuroraSDK() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.isInitialized = false;
+        _this.middlewareList = [];
+        return _this;
     }
-}
-/* harmony default export */ __webpack_exports__["default"] = (new AuroraSDK());
+    AuroraSDK.prototype.init = function (options) {
+        if (this.isInitialized)
+            return;
+        this.emit('init', this);
+        this.isInitialized = true;
+    };
+    AuroraSDK.prototype.use = function (middleware) {
+        this.middlewareList.push(middleware);
+        middleware.init(this);
+    };
+    AuroraSDK.prototype.deinit = function () {
+        this.middlewareList.forEach(function (middleware) {
+            middleware.deinit();
+        });
+        this.middlewareList = [];
+    };
+    return AuroraSDK;
+}(eventemitter3_1.EventEmitter));
+exports.default = new AuroraSDK();
 
 
 /***/ }),
@@ -426,3 +465,4 @@ if (true) {
 
 /***/ })
 /******/ ]);
+});

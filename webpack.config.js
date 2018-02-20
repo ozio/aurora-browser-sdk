@@ -1,12 +1,14 @@
 const { CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: {
+    index: './src/index.ts',
+    keyboard: './src/middlewares/keyboard',
+  },
 
   output: {
-    filename: './build/index.js',
-    library: 'AuroraSDK',
-    libraryTarget: 'window',
+    filename: './build/[name].js',
+    libraryTarget: 'umd',
   },
 
   resolve: {
