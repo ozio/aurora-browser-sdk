@@ -2,6 +2,8 @@
 
 > 💥 I still don't know how should it work. This project is just a first look preview of SDK in my mind. This isn't work for now.
 
+## Install
+
 ```bash
 npm install ozio/aurora-browser-sdk
 ```
